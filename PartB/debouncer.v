@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 module debouncer
 (input clk, // 100 Mhz clock source on Basys 3 FPGA
     input reset, // reset

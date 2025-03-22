@@ -1,22 +1,7 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: Trinity College Dublin
-// Engineer: Dylan Neve (21364333)
-// 
-// Create Date: 03/11/2025 10:02:44 AM
-// Design Name: LabF
-// Module Name: d_ff_reset_tb
-// Project Name: LabF
-// Target Devices: Basys 3
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module d_ff_reset_tb();
-
-    reg clk;
-    reg reset;
-    reg d;
+    reg clk, reset, d;
     wire q;
 
     d_ff_reset uut (.clk(clk), .reset(reset), .d(d), .q(q));

@@ -30,6 +30,7 @@ module top(input clk, reset, input [4:0] button_input, output [6:0] led_out, out
     d_ff_reset DFF6 (.clk(clk), .reset(reset), .d(Q_next[6]), .q(Q[6]));
     d_ff_reset DFF7 (.clk(clk), .reset(reset), .d(Q_next[7]), .q(Q[7]));
 
+    // Connect the seven segment display
     seven_segment_controller ssc (.clk(clk), .reset(reset), .temp(Q), .anode_select(anode_sel), .LED_out(led_out));
 
 endmodule

@@ -4,7 +4,7 @@ module d_ff_reset(input wire clk, reset, d, output reg q);
 
    // At Rising Edge of clk or reset
    always @(posedge clk, posedge reset)
-      // If reset then q to zero
+      // If reset then q to 0
       if (reset)
          q <= 1'b0;
       // Otherwise q set to input d

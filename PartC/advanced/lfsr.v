@@ -1,8 +1,8 @@
 `timescale 1ns / 1ps
 
-module lfsr(input clk, sh_en, reset, output [15:0] Q_out, output reg max_tick_reg);
+module lfsr(input clk, sh_en, reset, output [15:0] Q_out, ones, zeros, output reg max_tick_reg);
     // Seed
-    localparam seed = 16'b0000000101000101;
+    localparam seed = 16'b1111111111111111;
     
     // Current State
     reg [15:0] Q_state;
@@ -10,6 +10,9 @@ module lfsr(input clk, sh_en, reset, output [15:0] Q_out, output reg max_tick_re
     wire [15:0] Q_ns;
     // Feedback
     wire Q_fb;
+    
+    // Connect counter to MSB
+    counter cnt(.clk(clk), .sh_en(sh_en), .reset(reset), .i0(Q_state[15]), .ones(ones), .zeros(zeros));
     
     always @(posedge clk or posedge reset) begin
         if (reset) begin

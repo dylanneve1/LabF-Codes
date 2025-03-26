@@ -1,16 +1,15 @@
 `timescale 1ns / 1ps
 
 module top(input clk, reset, input [4:0] button_input, output [6:0] led_out, output [3:0] anode_sel);
-
-    wire [4:0] buttons;
-    wire [7:0] Q;
-    reg [7:0] Q_next;
+    wire [4:0] buttons; // To store debounced buttons
+    wire [7:0] Q; // Store output of Flip-Flops
+    reg [7:0] Q_next; // Store next state of Flip-Flops
 
     // Run button inputs through debouncer to stabilize
     debouncer dbouncer (.clk(clk), .reset(reset), .button_in(button_input), .button_out(buttons));
     
     always @(*) begin
-        Q_next = Q;
+        Q_next = Q; // Get current state
         
         if (buttons[0] || buttons[3]) // Increment
             Q_next = Q + 1;
